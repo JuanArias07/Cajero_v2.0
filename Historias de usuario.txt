@@ -1,0 +1,19 @@
+Historia de Usuario 1: 
+Registro e Inicio de Sesión de ClienteComo: Cliente de GOBANK.   
+Quiero: Registrarme en la plataforma e ingresar con mi tipo de documento, número de identificación y contraseña.   Para: Acceder a la plataforma bancaria y gestionar mis productos financieros de manera segura.   
+Criterios de Aceptación:
+El sistema debe permitir seleccionar el tipo de documento (C.C., C.E., Pasaporte) e ingresar el número de identificación y contraseña.   Si los datos son correctos, el sistema redirige al usuario al Dashboard / Panel del Cajero.   Si los datos son erróneos, debe mostrar un mensaje de error claro sin exponer información sensible.
+Historia de Usuario 2: 
+Consulta de Saldos y Productos FinacierosComo: Cliente autenticado en el sistema.   
+Quiero: Visualizar el saldo actual y los detalles de mis cuentas (Ahorros, Corriente) y Tarjeta de Crédito en el panel principal.   Para: Conocer el estado de mis finanzas y el cupo o sobregiro disponible antes de realizar una transacción.   
+Criterios de Aceptación:La pantalla principal debe mostrar tarjetas individuales para cada producto asignado al usuario.   Para la Cuenta Corriente, debe mostrar el saldo base y calcular el sobregiro disponible del 20% adicional.   Para la Tarjeta de Crédito, debe detallar el saldo utilizado, el cupo total y el cupo disponible para avances.  
+ Historia de Usuario 3: 
+Retiro de Dinero con Reglas de NegocioComo: Cliente del banco.   
+Quiero: Realizar retiros de dinero desde mis cuentas de Ahorro, Corriente o Tarjeta de Crédito.   
+Para: Disponer de mi dinero en efectivo según el saldo disponible en cada producto.   Criterios de Aceptación:Si el retiro se hace desde Cuenta de Ahorros, el sistema debe aplicar una deducción correspondiente al 1.5% de comisión/interés sobre el monto solicitado.   Si el retiro se hace desde Cuenta Corriente, el sistema permite retirar hasta el saldo total más el 20% de sobregiro permitido.   Si se realiza un Avance en Tarjeta de Crédito, el sistema debe calcular el cobro de una tarifa fija de $5.000 más el 2% sobre el valor retirado.   El sistema no debe permitir retiros si el monto supera los límites estipulados para el producto.
+Historia de Usuario 4: 
+Transferencias a Otros UsuariosComo: Cliente activo de GOBANK.   
+Quiero: Transferir fondos desde mis productos hacia cuentas de otros usuarios registrados en el sistema.   Para: Enviar dinero de forma rápida a terceros sin necesidad de acudir a una sucursal física.   
+Criterios de Aceptación:El usuario debe ingresar el documento o número de cuenta de destino y el monto a transferir.   El sistema debe validar que el cliente origen tenga fondos suficientes antes de procesar la transferencia.Restricción: El sistema debe impedir realizar transferencias hacia la misma cuenta o producto de origen.Al completarse, el saldo debe descontarse inmediatamente de la cuenta origen y sumarse a la cuenta destino.
+Historia de Usuario 5: 
+Historial de Movimientos y AuditoríaComo: Cliente del banco.   Quiero: Ver una tabla con el registro histórico de todas mis operaciones (consignaciones, retiros, transferencias).   Para: Llevar un control detallado de las entradas y salidas de mi dinero.   Criterios de Aceptación:La tabla debe listar los movimientos ordenados por fecha y hora.   Cada registro debe especificar el tipo de transacción (Consignación, Retiro, Transferencia), la cuenta involucrada, el monto y el estado de la operación.   Los montos que sumen dinero a la cuenta deben distinguirse visualmente de los montos que resten saldo.
