@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro - GOBANK</title>
+  <link rel="stylesheet" href="registro-styles.css">
+</head>
+<body>
+
+  <main class="register-container">
+    
+    <!-- Lado Izquierdo: Información y Beneficios -->
+    <section class="info-panel">
+      <div class="brand-logo">GO</div>
+      <div class="info-content">
+        <h1>Únete a la nueva era bancaria</h1>
+        <p>Abre tu cuenta GO en menos de 3 minutos. Sin comisiones ocultas, sin filas y con control absoluto desde tu celular.</p>
+        
+        <div class="benefits-list">
+          <div class="benefit-card">
+            <div class="benefit-icon">💳</div>
+            <div>
+              <h3>Tarjeta débito y crédito</h3>
+              <p>Solicita tu tarjeta física o digital sin costo de manejo.</p>
+            </div>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">📈</div>
+            <div>
+              <h3>Rendimiento diario</h3>
+              <p>Tu dinero crece desde $1 con las mejores tasas.</p>
+            </div>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🛡️</div>
+            <div>
+              <h3>Seguridad garantizada</h3>
+              <p>Protección biométrica y encriptación de grado bancario.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-footer">
+        <a href="index.html" class="back-link">← Volver al inicio</a>
+      </div>
+    </section>
+
+    <!-- Lado Derecho: Formulario de Registro -->
+    <section class="form-panel">
+      <div class="register-card">
+        <h2>Crea tu cuenta</h2>
+        <span class="subtitle-text">Comienza hoy mismo</span>
+        <p class="instruction-text">Ingresa tus datos personales para aperturar tu cuenta GO.</p>
+
+        <form class="register-form">
+          
+          <div class="input-group">
+            <input type="text" id="fullname" required placeholder=" ">
+            <label for="fullname">Nombre completo</label>
+          </div>
+
+          <div class="input-group">
+            <input type="text" id="id-number" required placeholder=" ">
+            <label for="id-number">Número de identificación</label>
+          </div>
+
+          <div class="input-group">
+            <input type="email" id="email" required placeholder=" ">
+            <label for="email">Correo electrónico</label>
+          </div>
+
+          <div class="input-group">
+            <input type="tel" id="phone" required placeholder=" ">
+            <label for="phone">Teléfono / Celular</label>
+          </div>
+
+          <div class="input-group">
+            <input type="password" id="password" required placeholder=" ">
+            <label for="password">Contraseña</label>
+          </div>
+
+          <div class="input-group">
+            <input type="password" id="confirm-password" required placeholder=" ">
+            <label for="confirm-password">Confirmar contraseña</label>
+          </div>
+
+          <div class="terms-group">
+            <label class="checkbox-container">
+              <input type="checkbox" required>
+              <span class="checkmark"></span>
+              Acepto los <a href="#">Términos y Condiciones</a> y la <a href="#">Política de Privacidad</a>.
+            </label>
+          </div>
+
+          <button type="submit" class="btn-submit">Registrarme ahora →</button>
+        </form>
+
+        <div class="card-footer">
+          <p>¿Ya tienes una cuenta?</p>
+          <a href="login.html" class="btn-login-link">Inicia sesión aquí</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

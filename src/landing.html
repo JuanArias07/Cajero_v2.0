@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Cajero - GOBANK</title>
+  <link rel="stylesheet" href="dashboard-styles.css">
+</head>
+<body>
+
+  <!-- Barra Superior de Navegación -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">GO</span>
+      <span class="brand-name">BANK</span>
+    </div>
+    <div class="user-info">
+      <div class="user-avatar">JD</div>
+      <div class="user-details">
+        <span class="user-name">Juan Diego Perez</span>
+        <span class="user-role">Cliente Preferencial</span>
+      </div>
+      <button class="btn-logout" onclick="alert('Sesión cerrada con éxito.')">Cerrar Sesión</button>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    
+    <!-- Barra Lateral de Navegación -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <button class="nav-item active" onclick="switchTab('resumen')">
+          <span class="icon">📊</span> Resumen / Saldos
+        </button>
+        <button class="nav-item" onclick="switchTab('consignar')">
+          <span class="icon">💵</span> Consignar Dinero
+        </button>
+        <button class="nav-item" onclick="switchTab('retirar')">
+          <span class="icon">🏧</span> Retirar Dinero
+        </button>
+        <button class="nav-item" onclick="switchTab('transferir')">
+          <span class="icon">💸</span> Transferencias
+        </button>
+        <button class="nav-item" onclick="switchTab('movimientos')">
+          <span class="icon">📜</span> Movimientos
+        </button>
+        <button class="nav-item" onclick="switchTab('perfil')">
+          <span class="icon">⚙️</span> Perfil y Seguridad
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+
+      <!-- SECCIÓN 1: RESUMEN DE SALDOS -->
+      <section id="tab-resumen" class="tab-content active">
+        <h2 class="section-title">Resumen de tus Productos</h2>
+        <div class="cards-grid">
+          
+          <div class="product-card savings">
+            <div class="card-header">
+              <span>Cuenta de Ahorros</span>
+              <span class="badge">1.5% rend.</span>
+            </div>
+            <div class="card-number">**** **** **** 4821</div>
+            <div class="card-balance">$ 2.450.000</div>
+            <div class="card-footer">
+              <small>Disponible para retiro directo</small>
+            </div>
+          </div>
+
+          <div class="product-card checking">
+            <div class="card-header">
+              <span>Cuenta Corriente</span>
+              <span class="badge overdrawn">20% Sobregiro</span>
+            </div>
+            <div class="card-number">**** **** **** 9102</div>
+            <div class="card-balance">$ 1.200.000</div>
+            <div class="card-footer">
+              <small>Límite con sobregiro: $ 1.440.000</small>
+            </div>
+          </div>
+
+          <div class="product-card credit">
+            <div class="card-header">
+              <span>Tarjeta de Crédito GO</span>
+              <span class="badge mastercard">Mastercard</span>
+            </div>
+            <div class="card-number">**** **** **** 3310</div>
+            <div class="card-balance">$ 850.000 <small>/ Cupo $3.000.000</small></div>
+            <div class="card-footer">
+              <small>Deuda pendiente de pago</small>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECCIÓN 2: CONSIGNAR DINERO -->
+      <section id="tab-consignar" class="tab-content">
+        <h2 class="section-title">Consignar Dinero</h2>
+        <div class="form-card">
+          <form class="action-form">
+            <div class="input-group">
+              <label>Selecciona el producto a depositar</label>
+              <select required>
+                <option value="ahorros">Cuenta de Ahorros - **** 4821 ($2.450.000)</option>
+                <option value="corriente">Cuenta Corriente - **** 9102 ($1.200.000)</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Monto a consignar ($)</label>
+              <input type="number" min="1" placeholder="Ej: 50000" required>
+            </div>
+            <button type="submit" class="btn-action">Realizar Consignación</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: RETIRAR DINERO -->
+     <!-- SECCIÓN 3: RETIRAR DINERO / AVANCES -->
+      <section id="tab-retirar" class="tab-content">
+        <h2 class="section-title">Retirar Dinero / Avances</h2>
+        <div class="form-card">
+          <form class="action-form">
+            <div class="input-group">
+              <label>Selecciona el producto de origen</label>
+              <select id="select-retiro-origen" onchange="actualizarInfoRetiro()" required>
+                <option value="ahorros">Cuenta de Ahorros - **** 4821 ($2.450.000)</option>
+                <option value="corriente">Cuenta Corriente - **** 9102 ($1.200.000)</option>
+                <option value="credito">Tarjeta de Crédito GO - **** 3310 (Cupo disp: $2.150.000)</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label>Monto a retirar ($)</label>
+              <input type="number" min="1" placeholder="Monto" required>
+            </div>
+
+            <!-- Recadro informativo dinámico según el producto seleccionado -->
+            <div id="info-retiro-box" class="info-box">
+              <p>💡 <b>Reglas de Ahorros:</b> Aplica un cobro del 1.5% de comisión por retiro[cite: 3].</p>
+            </div>
+
+            <button type="submit" class="btn-action">Confirmar Retiro / Avance</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: TRANSFERENCIAS -->
+      <section id="tab-transferir" class="tab-content">
+        <h2 class="section-title">Realizar Transferencia</h2>
+        <div class="form-card">
+          <form class="action-form">
+            <div class="input-group">
+              <label>Tipo de transferencia</label>
+              <select required>
+                <option value="propia">Entre mis propias cuentas</option>
+                <option value="terceros">A otros usuarios GO</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Cuenta de origen</label>
+              <select required>
+                <option value="ahorros">Cuenta de Ahorros - **** 4821</option>
+                <option value="corriente">Cuenta Corriente - **** 9102</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Cuenta de destino / ID de Usuario</label>
+              <input type="text" placeholder="Ej: 1029384756 o número de cuenta" required>
+            </div>
+            <div class="input-group">
+              <label>Monto a transferir ($)</label>
+              <input type="number" min="1" placeholder="Ej: 100000" required>
+            </div>
+            <button type="submit" class="btn-action">Transferir Ahora</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 5: CONSULTAR MOVIMIENTOS -->
+      <section id="tab-movimientos" class="tab-content">
+        <h2 class="section-title">Historial de Movimientos</h2>
+        <div class="table-card">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Fecha y Hora</th>
+                <th>Tipo</th>
+                <th>Producto</th>
+                <th>Valor</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>03/10/2026 09:15 AM</td>
+                <td><span class="badge-type deposit">Consignación</span></td>
+                <td>Cuenta de Ahorros</td>
+                <td class="amount positive">+$ 150.000</td>
+                <td>Exitosa</td>
+              </tr>
+              <tr>
+                <td>02/10/2026 04:30 PM</td>
+                <td><span class="badge-type withdrawal">Retiro</span></td>
+                <td>Cuenta Corriente</td>
+                <td class="amount negative">-$ 50.000</td>
+                <td>Exitosa</td>
+              </tr>
+              <tr>
+                <td>01/10/2026 11:20 AM</td>
+                <td><span class="badge-type transfer">Transferencia</span></td>
+                <td>Ahorros → Corriente</td>
+                <td class="amount neutral">$ 200.000</td>
+                <td>Exitosa</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 6: PERFIL Y SEGURIDAD -->
+      <section id="tab-perfil" class="tab-content">
+        <h2 class="section-title">Perfil y Configuración de Seguridad</h2>
+        <div class="form-card">
+          <h3>Datos Personales</h3>
+          <form class="action-form">
+            <div class="input-group">
+              <label>Nombre Completo</label>
+              <input type="text" value="Juan Diego Perez">
+            </div>
+            <div class="input-group">
+              <label>Número de Identificación</label>
+              <input type="text" value="1029384756" disabled>
+            </div>
+            <div class="input-group">
+              <label>Correo Electrónico</label>
+              <input type="email" value="juan.perez@email.com">
+            </div>
+            <button type="button" class="btn-action">Guardar Cambios</button>
+          </form>
+
+          <hr class="form-divider">
+
+          <h3>Cambio de Contraseña</h3>
+          <form class="action-form">
+            <div class="input-group">
+              <label>Contraseña Actual</label>
+              <input type="password" placeholder="••••••••">
+            </div>
+            <div class="input-group">
+              <label>Nueva Contraseña</label>
+              <input type="password" placeholder="••••••••">
+            </div>
+            <div class="input-group">
+              <label>Confirmar Nueva Contraseña</label>
+              <input type="password" placeholder="••••••••">
+            </div>
+            <button type="button" class="btn-action warning">Actualizar Contraseña</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Script interactivo básico para cambio de pestañas -->
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+      document.getElementById('tab-' + tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+  <script>
+    function actualizarInfoRetiro() {
+      const opcion = document.getElementById('select-retiro-origen').value;
+      const infoBox = document.getElementById('info-retiro-box');
+
+      if (opcion === 'ahorros') {
+        infoBox.innerHTML = '<p>💡 <b>Regla Ahorros:</b> Se aplica un cobro del 1.5% por retiro sobre el valor solicitado[cite: 3].</p>';
+      } else if (opcion === 'corriente') {
+        infoBox.innerHTML = '<p>💡 <b>Regla Corriente:</b> Puedes retirar hasta tu saldo disponible + un 20% adicional de sobregiro[cite: 3].</p>';
+      } else if (opcion === 'credito') {
+        infoBox.innerHTML = '<p>💳 <b>Avance con Tarjeta de Crédito:</b> Tiene un cobro fijo de $5.000 + 2% sobre el valor del avance[cite: 4].</p>';
+      }
+    }
+  </script>
+</body>
+</html>

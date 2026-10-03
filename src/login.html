@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicia Sesión - GOBANK</title>
+  <link rel="stylesheet" href="login-styles.css">
+</head>
+<body>
+
+  <main class="login-container">
+    
+    <!-- Lado Izquierdo: Información / Mensaje de marca -->
+    <section class="info-panel">
+      <div class="brand-logo">GO</div>
+      <div class="info-content">
+        <h1>Tu banco digital, donde estés</h1>
+        <p>Accede a tu cuenta en segundos para consultar tu saldo, hacer transferencias sin comisiones y gestionar tus tarjetas GO de forma segura.</p>
+        <div class="features-list">
+          <div class="feature-item">
+            <span class="icon">🔒</span>
+            <span>Seguridad de nivel bancario</span>
+          </div>
+          <div class="feature-item">
+            <span class="icon">⚡</span>
+            <span>Transferencias e iteraciones al instante</span>
+          </div>
+        </div>
+      </div>
+      <div class="info-footer">
+        <a href="index.html" class="back-link">← Volver al inicio</a>
+      </div>
+    </section>
+
+    <!-- Lado Derecho: Formulario de Iniciar Sesión -->
+    <section class="form-panel">
+      <div class="login-card">
+        <h2>Inicia sesión</h2>
+        <span class="welcome-text">Bienvenido de nuevo</span>
+        <p class="instruction-text">Ingresa a tu cuenta GO y continúa con tus planes.</p>
+
+        <form class="login-form">
+          <div class="input-group">
+            <input type="text" id="username" required placeholder=" ">
+            <label for="username">Usuario o Correo</label>
+          </div>
+
+          <div class="input-group">
+            <input type="password" id="password" required placeholder=" ">
+            <label for="password">Contraseña</label>
+          </div>
+
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox"> Recordarme
+            </label>
+            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button type="submit" class="btn-submit">Ingresar →</button>
+        </form>
+
+        <div class="card-footer">
+          <p>¿Aún no tienes cuenta?</p>
+          <a href="registro.html" class="btn-secondary-link">Crear cuenta</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
